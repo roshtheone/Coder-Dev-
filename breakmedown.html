@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Trolling Blocker SKY</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(to bottom right, #1a1a2e, #16213e, #0f3460);
+      color: white;
+      text-align: center;
+    }
+
+    .container {
+      padding: 20px;
+    }
+
+    h1 {
+      font-size: 2em;
+      margin-bottom: 10px;
+      text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.8);
+    }
+
+    p {
+      font-size: 1.2em;
+      margin-bottom: 20px;
+    }
+
+    .tabs {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 20px;
+    }
+
+    .tab {
+      padding: 10px 20px;
+      margin: 0 5px;
+      cursor: pointer;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 5px;
+      transition: background 0.3s ease;
+    }
+
+    .tab:hover {
+      background: rgba(255, 255, 255, 0.2);
+    }
+
+    .tab.active {
+      background: #2575fc;
+      color: white;
+      font-weight: bold;
+    }
+
+    .tab-content {
+      display: none;
+      animation: fadeIn 0.5s ease;
+    }
+
+    .tab-content.active {
+      display: block;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+
+    .footer {
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+      background: rgba(0, 0, 0, 0.8);
+      padding: 2px;
+      color: white;
+      font-size: 0.9em;
+      text-align: center;
+    }
+
+    .footer p {
+      margin: 0;
+    }
+
+    .negative-content {
+      border: 1px solid red;
+      margin: 20px;
+      padding: 10px;
+      color: white;
+      background: rgba(255, 0, 0, 0.1);
+    }
+
+    .stop-now {
+      margin-top: 35px;
+      padding: 10px 20px;
+      font-size: 16px;
+      background: red;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      animation: pulse 1.5s infinite;
+    }
+
+    .non-violent-image {
+      display: none;
+      margin-top: 20px;
+    }
+
+    @keyframes pulse {
+      0%, 100% {
+        transform: scale(1);
+      }
+      50% {
+        transform: scale(1.1);
+      }
+    }
+
+    /* Settings Buttons */
+    .blocker-button {
+      padding: 15px 30px;
+      font-size: 18px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      margin: 10px;
+      color: white;
+    }
+
+    .enable-blocker {
+      background-color: green;
+    }
+    .clickenable-blocker { 
+      background-color: rgb(125, 144, 109);
+    }
+
+
+    .disable-blocker {
+      background-color: red;
+    }
+    .clickdisable-blocker { 
+      background-color: rgb(38, 38, 67);
+    }
+
+    
+    .age-verification {
+      border: 2px solid white;
+      margin: 20px;
+      padding: 20px;
+      border-radius: 10px;
+      background: rgba(255, 255, 255, 0.1);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .age-verification video {
+      margin-top: 10px;
+      width: 300px;
+      height: 200px;
+      border: 2px solid white;
+      border-radius: 10px;
+    }
+
+    .verbal-input {
+      margin: 20px 0;
+    }
+
+    .hover-button {
+      margin-left: 10px;
+      padding: 10px 20px;
+      background: linear-gradient(to right, #FFD700, #FF4500);
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+
+    .hover-button:hover {
+      opacity: 0.9;
+    }
+
+    #id-validation-message {
+      color: red;
+      font-size: 14px;
+      margin-top: 10px;
+    }
+
+    .dynamics {
+      margin-top: 15px;
+      font-style: italic;
+      font-size: 1em;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Advanced Trolling Blocker</h1>
+    <p>Prevent harmful content and foster a safer, more respectful browsing environment.</p>
+
+    <!-- Tabs -->
+    <div class="tabs">
+      <div class="tab active" data-tab="home">Home</div>
+      <div class="tab" data-tab="blocker">Blocker</div>
+      <div class="tab" data-tab="age-verification">Age Verification</div>
+    </div>
+
+    <!-- Tab Content -->
+    <div id="home" class="tab-content active">
+        <h2>Welcome to the Trolling Blocker Tool</h2>
+        <div class="negative-content">
+          <h3>Example of Trolling Content</h3>
+          <img src="https://img.freepik.com/premium-photo/silhouette-male-hacker-server-room-neural-network-ai-generated_76080-62149.jpg" alt="Trolling Content" style="width:100%; height:auto; border-radius:8px;" id="negative-image">
+          <p>This content exemplifies trolling or harmful material that the system will flag and eliminate.</p>
+        </div>
+        <button class="stop-now" onclick="replaceNegativeContent()">Cease Immediately: Eradicate All Negative Content</button>
+        <div class="non-violent-image" id="non-violent-image">
+          <img src="https://carwow-uk-wp-3.imgix.net/bmw-M4-v-mercedes-amg-c63-v-audi-rs5-drag-race-thumbnail-lb-1.jpg?auto=format&cs=tinysrgb&fit=clip&ixlib=rb-1.1.0&q=10&w=1366" alt="Non-Violent Content" style="width:100%; height:auto; border-radius:8px;">
+          <p>This content serves as an example of positive and respectful material.</p>
+        </div>
+      </div>
+
+    <div id="blocker" class="tab-content">
+      <h2>Blocker</h2>
+      <button class="blocker-button enable-blocker" onclick="alert('Blocker has been successfully enabled!')">Enable Blocker</button>
+      <button class="blocker-button disable-blocker" onclick="alert('Blocker has been successfully disabled!')">Disable Blocker</button>
+    </div>
+
+    <!-- Age Verification -->
+    <div id="age-verification" class="tab-content active">
+      <h2>Age Verification</h2>
+      <div class="age-verification">
+        <!-- Camera Section -->
+        <div style="text-align: left;">
+          <p>Camera Portal:</p>
+          <video id="video" autoplay muted></video>
+          <button class="hover-button" onclick="requestCameraAccess()">Re-enable Camera</button>
+        </div>
+
+        <!-- Verbal Input Section -->
+        <div class="verbal-input" style="margin: 20px 0; text-align: center;">
+          <p>Speak Now: The system will detect your language and translate it into English.</p>
+          <textarea id="verbal-content" placeholder="Speak here..." style="width: 100%; height: 60px;"></textarea>
+          <button onclick="detectAndTranslate()">Detect & Translate</button>
+        </div>
+
+        <!-- Language Detection Result -->
+        <div id="language-detection" style="margin-top: 20px; text-align: center; display: none;">
+          <p><strong>Detected Language:</strong> <span id="detected-language">N/A</span></p>
+          <p><strong>English Translation:</strong></p>
+          <textarea id="translation-output" style="width: 100%; height: 100px;" readonly></textarea>
+          <p class="dynamics" id="speaking-dynamics">Speaking dynamics will appear here.</p>
+        </div>
+
+        <!-- ID Upload Section -->
+        <div style="margin-top: 20px; text-align: center;">
+          <p>Upload Your ID:</p>
+          <div style="display: flex; align-items: center; justify-content: center;">
+            <input type="file" id="upload-id" accept="image/*">
+            <button class="hover-button" onclick="validateID()">Validate ID</button>
+          </div>
+          <p id="id-validation-message" style="display: none;">Invalid ID. Kindly upload a valid image file.</p>
+        </div>
+      </div>
+    </div>
+    <!-- Footer -->
+    <div class="footer">
+      <p>&copy; Copyright reserved by CODER DEV</p>
+    </div>
+  </div>
+
+  <script>
+    // Tab Navigation Logic
+    const tabs = document.querySelectorAll(".tab");
+    const tabContents = document.querySelectorAll(".tab-content");
+
+    tabs.forEach(tab => {
+      tab.addEventListener("click", () => {
+        tabs.forEach(t => t.classList.remove("active"));
+        tabContents.forEach(tc => tc.classList.remove("active"));
+
+        tab.classList.add("active");
+        document.getElementById(tab.getAttribute("data-tab")).classList.add("active");
+      });
+    });
+
+    // Replace Negative Content
+    function replaceNegativeContent() {
+      document.getElementById('negative-image').style.display = 'none';
+      document.getElementById('non-violent-image').style.display = 'block';
+    }
+
+    // Request Camera Access
+    function requestCameraAccess() {
+      navigator.mediaDevices.getUserMedia({ video: true, audio: true })
+        .then((stream) => {
+          document.getElementById("video").srcObject = stream;
+        })
+        .catch(() => alert("Camera or microphone access is required to proceed with verification."));
+    }
+
+    // Language Detection and Translation
+    function detectAndTranslate() {
+      const spokenText = document.getElementById("verbal-content").value.toLowerCase();
+      const languages = {
+        "hallo": { language: "German", translation: "Hello" },
+        "bonjour": { language: "French", translation: "Hello" },
+        "hola": { language: "Spanish", translation: "Hello" },
+        "kya haal hai": { language: "Urdu", translation: "How are you?" }
+      };
+
+      let detectedLanguage = "Unknown";
+      let translation = "No translation available.";
+
+      for (const [phrase, info] of Object.entries(languages)) {
+        if (spokenText.includes(phrase)) {
+          detectedLanguage = info.language;
+          translation = info.translation;
+          break;
+        }
+      }
+
+      document.getElementById("detected-language").textContent = detectedLanguage;
+      document.getElementById("translation-output").value = translation;
+      document.getElementById("language-detection").style.display = "block";
+      document.getElementById("speaking-dynamics").textContent = "You spoke clearly and fluently.";
+    }
+
+    // ID Validation
+    function validateID() {
+      const fileInput = document.getElementById("upload-id");
+      const validationMessage = document.getElementById("id-validation-message");
+
+      if (fileInput.files.length === 0 || !fileInput.files[0].type.startsWith("image/")) {
+        validationMessage.style.display = "block";
+      } else {
+        validationMessage.style.display = "none";
+        alert("ID validated successfully!");
+      }
+    }
+
+    // Camera and Microphone Access
+    navigator.mediaDevices.getUserMedia({ video: true, audio: true })
+      .then((stream) => {
+        document.getElementById("video").srcObject = stream;
+      })
+      .catch(() => alert("Access to the camera or microphone has been regrettably declined!"));
+  </script>
+</body>
+</html>
