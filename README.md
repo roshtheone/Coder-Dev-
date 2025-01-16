@@ -1,2 +1,1 @@
-# Advanced Trolling Blocker
-# Coder-Dev-
+# Advanced Trolling Blocker By Coder-Dev-
